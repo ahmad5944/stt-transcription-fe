@@ -1,0 +1,566 @@
+:root {
+  color-scheme: dark;
+}
+
+.dashboard {
+  min-height: 100vh;
+  background: #0f1115;
+  color: #e5e7eb;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 24px 32px 48px;
+}
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.dashboard-header h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1c1f26;
+  color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.icon-btn:hover {
+  background: #262a33;
+}
+
+.avatar-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr 320px;
+  gap: 20px;
+  align-items: start;
+  background: #14161d;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+@media (max-width: 1200px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .column-right {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 960px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .column-right {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding: 16px 14px 32px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 16px;
+  }
+
+  .dashboard-grid {
+    padding: 14px;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 14px 16px;
+  }
+
+  .record-btn .circle,
+  .stop-btn .circle {
+    width: 56px;
+    height: 56px;
+    font-size: 20px;
+  }
+
+  .record-controls {
+    gap: 20px;
+    padding: 16px 0;
+  }
+
+  .icon-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: #1a1d24;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 16px;
+  padding: 18px 20px;
+}
+
+.card h3 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.device-select-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #12141a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  padding: 10px 14px;
+}
+
+.device-select-wrapper .mic-icon {
+  font-size: 16px;
+}
+
+.device-select-wrapper select {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #e5e7eb;
+  font-size: 14px;
+  outline: none;
+}
+
+.device-select-wrapper select option {
+  background: #1a1d24;
+}
+
+.db-value {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.level-bar-track {
+  height: 10px;
+  border-radius: 6px;
+  background: #12141a;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.level-bar-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #1d4ed8, #38bdf8);
+  transition: width 0.1s linear;
+}
+
+.level-bar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #6b7280;
+  margin-top: 6px;
+}
+
+.level-caption {
+  text-align: center;
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 10px;
+}
+
+.record-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 0;
+}
+
+.record-btn,
+.stop-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  color: #e5e7eb;
+  cursor: pointer;
+}
+
+.record-btn .circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  background: radial-gradient(circle at 30% 30%, #3b82f6, #1d4ed8);
+  box-shadow: 0 0 0 6px rgba(59, 130, 246, 0.15);
+}
+
+.stop-btn .circle {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  background: #262a33;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.record-btn:disabled .circle,
+.stop-btn:disabled .circle {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.record-btn .label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.record-btn .sublabel,
+.stop-btn .sublabel {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.stop-btn .label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: #d1d5db;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.15);
+}
+
+.status-dot.status-dot-idle {
+  background: #6b7280;
+  box-shadow: none;
+}
+
+.recordings-card ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 480px;
+  overflow-y: auto;
+}
+
+.recording-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #12141a;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.recording-item .recording-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.recording-item .recording-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #e5e7eb;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.recording-item .recording-meta {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.play-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #1d4ed8;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.play-btn:hover {
+  background: #2563eb;
+}
+
+.recording-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.delete-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: #7f1d1d;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+
+.delete-btn:hover {
+  background: #991b1b;
+}
+
+.refresh-link {
+  background: none;
+  border: none;
+  color: #60a5fa;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 0;
+}
+
+/* Transcript card - full-width panel rendered below .dashboard-grid, not inside a column */
+.transcript-card {
+  margin-top: 20px;
+}
+
+.transcript-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.transcript-live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.2);
+  animation: transcript-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes transcript-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+.transcript-body {
+  max-height: 220px;
+  overflow-y: auto;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #d1d5db;
+  white-space: pre-wrap;
+}
+
+.transcript-placeholder {
+  color: #6b7280;
+  font-size: 13px;
+}
+
+.recording-item .recording-transcript {
+  font-size: 11px;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+/*
+ * Picture-in-Picture fallback modal (used when the native Document PiP API is unavailable).
+ * These rules were previously missing from source entirely, which is why the floating panel
+ * had no position/size/overflow constraints and appeared to "not scroll, jump to top" — it had
+ * no scroll container at all, just unconstrained content pushed into normal document flow.
+ */
+.pip-fallback-overlay {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 420px;
+  height: 480px;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - 32px);
+  z-index: 9999;
+  resize: both;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+@media (max-width: 480px) {
+  .pip-fallback-overlay {
+    right: 12px;
+    bottom: 12px;
+    width: calc(100vw - 24px);
+    height: min(420px, calc(100vh - 24px));
+  }
+}
+
+.pip-fallback-modal {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #14161d;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.pip-fallback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+  flex-shrink: 0;
+}
+
+.pip-fallback-close {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: #1c1f26;
+  color: #e5e7eb;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.pip-fallback-close:hover {
+  background: #262a33;
+}
+
+.pip-panel {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  padding: 16px;
+  color: #e5e7eb;
+  background: #0f1115;
+  overflow: hidden;
+}
+
+.pip-panel--compact {
+  padding: 10px;
+}
+
+.pip-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.pip-title {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* The scrollable region: min-height:0 lets flex children shrink below content size so
+   overflow-y actually engages instead of forcing the parent (and page) to grow/scroll-jump. */
+.pip-panel-content {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pip-panel-content--compact {
+  gap: 12px;
+}
+
+.circle--sm {
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+}
+
+.record-controls--compact {
+  gap: 16px;
+  padding: 8px 0;
+}
