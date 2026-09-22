@@ -190,7 +190,11 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
   return (
     <div className="dashboard">
       <header className="dashboard-header">
-        <h1>Bluetooth Microphone Testing</h1>
+        <img
+          src="/assets/image/binus-logo.png"
+          alt="BINUS Logo"
+          className="binus-logo w-[100px] h-auto object-contain"
+        />
         <div className="header-actions">
           <button
             type="button"
@@ -198,7 +202,7 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
             onClick={handleOpenPiP}
             title={isPiPActive ? "PiP Aktif" : "Buka Picture-in-Picture"}
           >
-            📺 PiP
+            📺
           </button>
           <button type="button" className="icon-btn" title="Pengaturan">⚙</button>
           <button type="button" className="icon-btn avatar-btn" onClick={onLogout} title="Logout">👤</button>
@@ -237,86 +241,83 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
       <div className="dashboard-grid">
         <div className="column column-left">
           <div className="card">
-            <h3>Select Audio Device</h3>
-            <div className="device-select-wrapper">
-              <span className="mic-icon">🎙</span>
-              <select
-                id="device-select"
-                value={selectedDeviceId ?? ''}
-                onChange={(event) => handleSelectDevice(event.target.value)}
+            <h3>Audio Control</h3>
+            <div className="flex flex-col gap-4">
+              <div className="device-select-wrapper">
+                <span className="mic-icon">🎙</span>
+                <select
+                  id="device-select"
+                  value={selectedDeviceId ?? ''}
+                  onChange={(event) => handleSelectDevice(event.target.value)}
+                >
+                  <option value="" disabled>Select Bluetooth device...</option>
+                  {devices.map((device) => (
+                    <option key={device.deviceId} value={device.deviceId}>
+                      {device.label}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <h3 className="mb-3">Level Meter</h3>
+                <div className="db-value">{dbValue.toFixed(0)} dB</div>
+                <div className="level-bar-track">
+                  <div className="level-bar-fill" style={{ width: `${levelPercent}%` }} />
+                </div>
+                <div className="level-bar-labels">
+                  <span>{MIN_DB} dB</span>
+                  <span>0 dB</span>
+                </div>
+                <div className="level-caption">Audio Input Level</div>
+              </div>
+
+              <div className="record-controls">
+                <button type="button" className="record-btn" onClick={handleStart} disabled={!selectedDeviceId || isRecording}>
+                  <span className="circle">🎙</span>
+                  <span className="label">REKAM</span>
+                  <span className="sublabel">Mulai Rekam</span>
+                </button>
+                <button type="button" className="stop-btn" onClick={handleStop} disabled={!isRecording}>
+                  <span className="circle">■</span>
+                  <span className="label">STOP</span>
+                  <span className="sublabel">Hentikan</span>
+                </button>
+              </div>
+
+              <div className="status-row">
+                <span className={`status-dot${isRecording ? '' : ' status-dot-idle'}`} />
+                <span>{status}</span>
+              </div>
+              {recordingId && <div className="mt-1 text-center text-xs text-slate-500">Recording ID: {recordingId}</div>}
+            </div>
+          </div>
+
+          <div className="card transcript-card">
+            <div className="transcript-header">
+              <h3 className="m-0">Transkrip</h3>
+              {isRecording && <span className="transcript-live-dot" title="Live" />}
+              <button
+                type="button"
+                className="refresh-link ml-auto"
+                onClick={() => setTranscript('')}
+                disabled={isRecording}
               >
-                <option value="" disabled>Select Microphone...</option>
-                {devices.map((device) => (
-                  <option key={device.deviceId} value={device.deviceId}>
-                    {device.label}
-                  </option>
-                ))}
-              </select>
+                Reset
+              </button>
             </div>
-          </div>
-
-          <div className="card">
-            <h3>Level-Meter (dB)</h3>
-            <div className="db-value">{dbValue.toFixed(0)} dB</div>
-            <div className="level-bar-track">
-              <div className="level-bar-fill" style={{ width: `${levelPercent}%` }} />
+            <div className="transcript-body">
+              {transcript || (
+                <span className="transcript-placeholder">
+                  Transkrip akan muncul di sini secara live saat Anda mulai merekam.
+                </span>
+              )}
             </div>
-            <div className="level-bar-labels">
-              <span>{MIN_DB} dB</span>
-              <span>0 dB</span>
-            </div>
-            <div className="level-caption">Audio Input Level</div>
-          </div>
-        </div>
-
-        <div className="column column-middle">
-          <div className="record-controls">
-            <button type="button" className="record-btn" onClick={handleStart} disabled={!selectedDeviceId || isRecording}>
-              <span className="circle">🎙</span>
-              <span className="label">REKAM</span>
-              <span className="sublabel">Mulai Rekam</span>
-            </button>
-            <button type="button" className="stop-btn" onClick={handleStop} disabled={!isRecording}>
-              <span className="circle">■</span>
-              <span className="label">STOP</span>
-              <span className="sublabel">Hentikan</span>
-            </button>
-          </div>
-
-          <div className="card status-card">
-            <h3>Status</h3>
-            <div className="status-row">
-              <span className={`status-dot${isRecording ? '' : ' status-dot-idle'}`} />
-              <span>{status}</span>
-            </div>
-            {recordingId && <div className="mt-2.5 text-center text-xs text-slate-500">Recording ID: {recordingId}</div>}
           </div>
         </div>
 
         <div className="column column-right">
           <RecordingsList key={recordingsKey} />
-        </div>
-      </div>
-
-      <div className="card transcript-card">
-        <div className="transcript-header">
-          <h3 className="m-0">Transkrip</h3>
-          {isRecording && <span className="transcript-live-dot" title="Live" />}
-          <button
-            type="button"
-            className="refresh-link ml-auto"
-            onClick={() => setTranscript('')}
-            disabled={isRecording}
-          >
-            Reset
-          </button>
-        </div>
-        <div className="transcript-body">
-          {transcript || (
-            <span className="transcript-placeholder">
-              Transkrip akan muncul di sini secara live saat Anda mulai merekam.
-            </span>
-          )}
         </div>
       </div>
     </div>

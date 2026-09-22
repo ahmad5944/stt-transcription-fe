@@ -22,7 +22,6 @@ export function PiPControlPanel({
   onStop,
   isRecording,
   level,
-  onClose,
 }: PiPControlPanelProps & { onClose?: () => void }) {
   const dbValue = level > 0 ? Math.max(MIN_DB, 20 * Math.log10(level)) : MIN_DB;
   const levelPercent = ((dbValue - MIN_DB) / -MIN_DB) * 100;
@@ -49,9 +48,6 @@ export function PiPControlPanel({
     <div className={`pip-panel ${compact ? 'pip-panel--compact' : ''}`}>
       <div className="pip-panel-header">
         <h2 className="pip-title">{compact ? '🎙 PiP' : '📺 Picture-in-Picture Control'}</h2>
-        {onClose && (
-          <button type="button" className="icon-btn" onClick={onClose} title="Tutup PiP">✕</button>
-        )}
       </div>
 
       <div className={`pip-panel-content ${compact ? 'pip-panel-content--compact' : ''}`}>

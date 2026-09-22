@@ -1,16 +1,18 @@
 @import 'tailwindcss';
 
 :root {
-  --text: #a3a3a3;
-  --text-h: #f8fafc;
-  --bg: #050507;
-  --border: #1f2937;
-  --code-bg: #09090b;
-  --accent: #38bdf8;
-  --accent-bg: rgba(56, 189, 248, 0.08);
-  --accent-border: rgba(56, 189, 248, 0.5);
-  --social-bg: rgba(15, 23, 42, 0.65);
-  --shadow: rgba(0, 0, 0, 0.45) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+  --text: #475569;
+  --text-h: #0f172a;
+  --bg: #f8fbff;
+  --surface: #ffffff;
+  --surface-2: #eff6ff;
+  --border: #dbeafe;
+  --code-bg: #eff6ff;
+  --accent: #2563eb;
+  --accent-bg: rgba(37, 99, 235, 0.08);
+  --accent-border: rgba(37, 99, 235, 0.25);
+  --social-bg: rgba(239, 246, 255, 0.75);
+  --shadow: rgba(37, 99, 235, 0.12) 0 10px 30px -12px, rgba(15, 23, 42, 0.08) 0 4px 10px -4px;
 
   --sans: 'Segoe UI', Roboto, sans-serif;
   --heading: 'Segoe UI', Roboto, sans-serif;
@@ -18,29 +20,13 @@
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
-  color-scheme: dark;
+  color-scheme: light;
   color: var(--text);
   background: var(--bg);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #a3a3a3;
-    --text-h: #f8fafc;
-    --bg: #050507;
-    --border: #1f2937;
-    --code-bg: #09090b;
-    --accent: #38bdf8;
-    --accent-bg: rgba(56, 189, 248, 0.08);
-    --accent-border: rgba(56, 189, 248, 0.5);
-    --social-bg: rgba(15, 23, 42, 0.65);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
-    }
 }
 
 @layer base {
@@ -52,14 +38,13 @@
   body {
     @apply m-0 bg-[var(--bg)] text-[var(--text)];
     background-image:
-      radial-gradient(circle at top, rgba(56, 189, 248, 0.08), transparent 28%),
-      radial-gradient(circle at bottom right, rgba(168, 85, 247, 0.06), transparent 22%);
+      radial-gradient(circle at top, rgba(37, 99, 235, 0.08), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(59, 130, 246, 0.06), transparent 22%);
     background-attachment: fixed;
   }
 
   #root {
-    @apply mx-auto flex min-h-screen w-full max-w-[1126px] flex-col border-x border-[var(--border)] bg-[var(--bg)] box-border;
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 0 0 9999px rgba(0, 0, 0, 0.12);
+    @apply flex min-h-screen w-full flex-col bg-[var(--bg)] box-border;
   }
 
   h1,
@@ -96,7 +81,7 @@
 
   code {
     @apply bg-[var(--code-bg)] px-2 py-1 text-[15px] leading-[135%];
-    border: 1px solid rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(37, 99, 235, 0.08);
   }
 
   @media (max-width: 1024px) {

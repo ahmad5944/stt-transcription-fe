@@ -36,7 +36,7 @@ copy .env.example .env
 npm run dev
 ```
 
-`VITE_API_BASE_URL` mengarah ke Gateway (`http://localhost:5000`).
+`VITE_API_BASE_URL` biarkan kosong saat local dev supaya request `/api` lewat proxy Vite ke Gateway (`http://localhost:5000`). Kalau diisi `http://localhost:5000`, browser akan memanggil gateway langsung dan bisa kena CORS.
 `VITE_STREAMING_WS_URL` mengarah ke Streaming Service WebSocket (`ws://localhost:5003`).
 
 ## Autentikasi

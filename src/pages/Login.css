@@ -6,16 +6,17 @@
   }
 
   .login-shell {
-    @apply mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1126px] overflow-hidden rounded-[4px] border border-[var(--border)] bg-black shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out lg:grid-cols-[6fr_5fr];
+    @apply mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1126px] overflow-hidden rounded-[28px] border border-blue-100 bg-white shadow-[0_20px_60px_rgba(37,99,235,0.08)] transition duration-300 ease-out lg:grid-cols-[6fr_5fr];
+    background-image: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(248,251,255,1) 100%);
   }
 
   .login-hero {
-    @apply relative hidden overflow-hidden bg-black px-10 py-10 text-slate-200 lg:flex lg:flex-col lg:justify-between;
+    @apply relative hidden overflow-hidden bg-[linear-gradient(180deg,#eff6ff_0%,#ffffff_100%)] px-10 py-10 text-slate-600 lg:flex lg:flex-col lg:justify-between;
   }
 
   .login-hero::before {
     content: '';
-    @apply absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_30%)];
+    @apply absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.12),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(37,99,235,0.08),transparent_30%)];
   }
 
   .login-hero-copy {
@@ -23,39 +24,39 @@
   }
 
   .login-hero-kicker {
-    @apply inline-flex rounded-full border border-slate-700 bg-black px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200 transition duration-200 hover:border-sky-500/70 hover:text-white;
+    @apply inline-flex rounded-full border border-blue-200 bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-blue-700 transition duration-200 hover:border-blue-300 hover:text-blue-800;
   }
 
   .login-hero-copy h1 {
-    @apply mt-6 text-5xl font-medium leading-[1.05] tracking-[-0.04em] text-white;
+    @apply mt-6 text-5xl font-semibold leading-[1.05] tracking-[-0.04em] text-[var(--text-h)];
   }
 
   .login-hero-copy p {
-    @apply mt-4 max-w-[36rem] text-base leading-7 text-slate-300;
+    @apply mt-4 max-w-[36rem] text-base leading-7 text-slate-600;
   }
 
   .login-hero-card {
-    @apply relative z-10 flex max-w-[26rem] items-start gap-4 rounded-[4px] border border-slate-700 bg-black p-5 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out hover:border-sky-500/40 hover:shadow-[0_12px_30px_rgba(56,189,248,0.08)];
+    @apply relative z-10 flex max-w-[26rem] items-start gap-4 rounded-[24px] border border-blue-100 bg-white p-5 shadow-[0_14px_40px_rgba(37,99,235,0.08)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-300;
   }
 
   .login-hero-badge {
-    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-xl text-white shadow-[0_0_0_6px_rgba(255,255,255,0.08)];
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,#3b82f6_0%,#2563eb_100%)] text-xl text-white shadow-[0_12px_28px_rgba(37,99,235,0.22)];
   }
 
   .login-hero-card strong {
-    @apply block text-sm font-semibold text-white;
+    @apply block text-sm font-semibold text-[var(--text-h)];
   }
 
   .login-hero-card p {
-    @apply mt-1 text-sm leading-6 text-slate-300;
+    @apply mt-1 text-sm leading-6 text-slate-600;
   }
 
   .login-panel {
-    @apply flex items-center justify-center bg-black px-6 py-10 md:px-12;
+    @apply flex items-center justify-center bg-white px-6 py-10 md:px-12;
   }
 
   .login-card {
-    @apply w-full max-w-[380px] rounded-[4px] border border-[var(--border)] bg-black p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out hover:border-sky-500/30 hover:shadow-[0_12px_30px_rgba(56,189,248,0.08)];
+    @apply w-full max-w-[380px] rounded-[24px] border border-blue-100 bg-white p-8 shadow-[0_18px_40px_rgba(37,99,235,0.08)] transition duration-300 ease-out hover:-translate-y-0.5 hover:border-blue-300;
   }
 
   .login-brand {
@@ -63,7 +64,7 @@
   }
 
   .login-brand .mic-badge {
-    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-xl text-white shadow-[0_0_0_6px_rgba(255,255,255,0.08)] transition duration-200 hover:shadow-[0_0_0_6px_rgba(56,189,248,0.18)];
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-[linear-gradient(180deg,#3b82f6_0%,#2563eb_100%)] text-xl text-white shadow-[0_12px_28px_rgba(37,99,235,0.22)] transition duration-200 hover:shadow-[0_16px_36px_rgba(37,99,235,0.28)];
   }
 
   .login-brand h1 {
@@ -71,7 +72,7 @@
   }
 
   .login-brand p {
-    @apply mt-0.5 text-xs text-slate-400;
+    @apply mt-0.5 text-xs text-slate-500;
   }
 
   .login-form {
@@ -79,11 +80,11 @@
   }
 
   .login-field {
-    @apply flex flex-col gap-1.5 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400;
+    @apply flex flex-col gap-1.5 text-[12px] font-semibold uppercase tracking-[0.08em] text-slate-500;
   }
 
   .login-field input {
-    @apply rounded-[10px] border border-slate-700 bg-black px-3.5 py-2.5 text-sm text-slate-100 outline-none transition duration-200 focus:border-sky-500 focus:bg-black hover:border-slate-500 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.12)];
+    @apply rounded-[16px] border border-blue-100 bg-blue-50/60 px-3.5 py-2.5 text-sm text-slate-700 outline-none transition duration-200 focus:border-blue-300 focus:bg-white hover:border-blue-200 hover:shadow-[0_0_0_1px_rgba(37,99,235,0.08)];
   }
 
   .login-error {
@@ -91,15 +92,15 @@
   }
 
   .login-submit {
-    @apply rounded-[10px] border border-slate-700 bg-black px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:border-sky-500/60 hover:bg-slate-900 hover:text-sky-100 disabled:cursor-not-allowed disabled:opacity-60;
+    @apply rounded-[16px] border border-blue-200 bg-[linear-gradient(180deg,#3b82f6_0%,#2563eb_100%)] px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_16px_36px_rgba(37,99,235,0.28)] disabled:cursor-not-allowed disabled:opacity-60;
   }
 
   .login-switch {
-    @apply mt-4 text-center text-sm text-slate-400;
+    @apply mt-4 text-center text-sm text-slate-500;
   }
 
   .login-switch button {
-    @apply border-0 bg-transparent p-0 text-slate-300 transition duration-200 hover:text-sky-300;
+    @apply border-0 bg-transparent p-0 text-blue-600 transition duration-200 hover:text-blue-700;
   }
 
   @media (max-width: 1024px) {
