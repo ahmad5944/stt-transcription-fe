@@ -33,56 +33,78 @@ export function Login({ onAuthenticated }: LoginProps) {
 
   return (
     <div className="login-page">
-      <div className="login-card">
-        <div className="login-brand">
-          <span className="mic-badge">🎙</span>
-          <div>
-            <h1>{mode === 'login' ? 'Masuk' : 'Daftar Akun'}</h1>
-            <p>Bluetooth Microphone Testing</p>
+      <div className="login-shell">
+        <aside className="login-hero">
+          <div className="login-hero-copy">
+            <span className="login-hero-kicker">Bluetooth Meeting</span>
+            <h1>Audio streaming, transcription, dan PiP dalam satu workspace.</h1>
+            <p>
+              Pantau perangkat, mulai rekaman, lihat transkrip live, dan kelola hasil rekaman dalam tampilan yang rapi dan responsif.
+            </p>
           </div>
-        </div>
 
-        <form className="login-form" onSubmit={handleSubmit}>
-          <label className="login-field">
-            Email
-            <input
-              type="email"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              required
-            />
-          </label>
+          <div className="login-hero-card">
+            <span className="login-hero-badge">🎙</span>
+            <div>
+              <strong>Live audio controls</strong>
+              <p>Device selection, level meter, dan PiP controls tetap sinkron.</p>
+            </div>
+          </div>
+        </aside>
 
-          <label className="login-field">
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-              minLength={6}
-            />
-          </label>
+        <main className="login-panel">
+          <div className="login-card">
+            <div className="login-brand">
+              <span className="mic-badge">🎙</span>
+              <div>
+                <h1>{mode === 'login' ? 'Masuk' : 'Daftar Akun'}</h1>
+                <p>Bluetooth Microphone Testing</p>
+              </div>
+            </div>
 
-          {error && <p className="login-error">{error}</p>}
+            <form className="login-form" onSubmit={handleSubmit}>
+              <label className="login-field">
+                Email
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
+                  required
+                />
+              </label>
 
-          <button type="submit" className="login-submit" disabled={isSubmitting}>
-            {isSubmitting ? 'Memproses...' : mode === 'login' ? 'Login' : 'Daftar'}
-          </button>
-        </form>
+              <label className="login-field">
+                Password
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  required
+                  minLength={6}
+                />
+              </label>
 
-        <p className="login-switch">
-          {mode === 'login' ? 'Belum punya akun?' : 'Sudah punya akun?'}{' '}
-          <button
-            type="button"
-            onClick={() => {
-              setMode(mode === 'login' ? 'register' : 'login');
-              setError(null);
-            }}
-          >
-            {mode === 'login' ? 'Daftar di sini' : 'Login di sini'}
-          </button>
-        </p>
+              {error && <p className="login-error">{error}</p>}
+
+              <button type="submit" className="login-submit" disabled={isSubmitting}>
+                {isSubmitting ? 'Memproses...' : mode === 'login' ? 'Login' : 'Daftar'}
+              </button>
+            </form>
+
+            <p className="login-switch">
+              {mode === 'login' ? 'Belum punya akun?' : 'Sudah punya akun?'}{' '}
+              <button
+                type="button"
+                onClick={() => {
+                  setMode(mode === 'login' ? 'register' : 'login');
+                  setError(null);
+                }}
+              >
+                {mode === 'login' ? 'Daftar di sini' : 'Login di sini'}
+              </button>
+            </p>
+          </div>
+        </main>
       </div>
     </div>
   );

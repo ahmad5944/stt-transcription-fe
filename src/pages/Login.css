@@ -1,128 +1,124 @@
-.login-page {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #0f1115;
-  color: #e5e7eb;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  padding: 24px;
-}
+@reference '../index.css';
 
-.login-card {
-  width: 100%;
-  max-width: 380px;
-  background: #1a1d24;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 16px;
-  padding: 32px 28px;
-}
+@layer components {
+  .login-page {
+    @apply min-h-full bg-[var(--bg)] text-[var(--text)] px-6 py-8;
+  }
 
-.login-brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 28px;
-}
+  .login-shell {
+    @apply mx-auto grid min-h-[calc(100svh-4rem)] w-full max-w-[1126px] overflow-hidden rounded-[4px] border border-[var(--border)] bg-black shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out lg:grid-cols-[6fr_5fr];
+  }
 
-.login-brand .mic-badge {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-}
+  .login-hero {
+    @apply relative hidden overflow-hidden bg-black px-10 py-10 text-slate-200 lg:flex lg:flex-col lg:justify-between;
+  }
 
-.login-brand h1 {
-  margin: 0;
-  font-size: 18px;
-  font-weight: 600;
-}
+  .login-hero::before {
+    content: '';
+    @apply absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.08),transparent_30%),radial-gradient(circle_at_bottom_left,rgba(255,255,255,0.05),transparent_30%)];
+  }
 
-.login-brand p {
-  margin: 2px 0 0;
-  font-size: 12px;
-  color: #6b7280;
-}
+  .login-hero-copy {
+    @apply relative z-10 max-w-[28rem];
+  }
 
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
+  .login-hero-kicker {
+    @apply inline-flex rounded-full border border-slate-700 bg-black px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-slate-200 transition duration-200 hover:border-sky-500/70 hover:text-white;
+  }
 
-.login-field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: #9ca3af;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
+  .login-hero-copy h1 {
+    @apply mt-6 text-5xl font-medium leading-[1.05] tracking-[-0.04em] text-white;
+  }
 
-.login-field input {
-  background: #12141a;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 10px;
-  padding: 10px 14px;
-  color: #e5e7eb;
-  font-size: 14px;
-  font-weight: 400;
-  text-transform: none;
-  letter-spacing: normal;
-  outline: none;
-}
+  .login-hero-copy p {
+    @apply mt-4 max-w-[36rem] text-base leading-7 text-slate-300;
+  }
 
-.login-field input:focus {
-  border-color: #6366f1;
-}
+  .login-hero-card {
+    @apply relative z-10 flex max-w-[26rem] items-start gap-4 rounded-[4px] border border-slate-700 bg-black p-5 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out hover:border-sky-500/40 hover:shadow-[0_12px_30px_rgba(56,189,248,0.08)];
+  }
 
-.login-error {
-  margin: 0;
-  color: #f87171;
-  font-size: 12px;
-}
+  .login-hero-badge {
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-black text-xl text-white shadow-[0_0_0_6px_rgba(255,255,255,0.08)];
+  }
 
-.login-submit {
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border: none;
-  border-radius: 10px;
-  color: white;
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px;
-  cursor: pointer;
-}
+  .login-hero-card strong {
+    @apply block text-sm font-semibold text-white;
+  }
 
-.login-submit:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-}
+  .login-hero-card p {
+    @apply mt-1 text-sm leading-6 text-slate-300;
+  }
 
-.login-switch {
-  margin-top: 18px;
-  font-size: 13px;
-  color: #9ca3af;
-  text-align: center;
-}
+  .login-panel {
+    @apply flex items-center justify-center bg-black px-6 py-10 md:px-12;
+  }
 
-.login-switch button {
-  background: none;
-  border: none;
-  color: #818cf8;
-  cursor: pointer;
-  font-size: 13px;
-  padding: 0;
-}
-
-@media (max-width: 420px) {
   .login-card {
-    padding: 24px 20px;
+    @apply w-full max-w-[380px] rounded-[4px] border border-[var(--border)] bg-black p-8 shadow-[0_1px_3px_rgba(0,0,0,0.08)] transition duration-300 ease-out hover:border-sky-500/30 hover:shadow-[0_12px_30px_rgba(56,189,248,0.08)];
+  }
+
+  .login-brand {
+    @apply mb-7 flex items-center gap-3;
+  }
+
+  .login-brand .mic-badge {
+    @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-black text-xl text-white shadow-[0_0_0_6px_rgba(255,255,255,0.08)] transition duration-200 hover:shadow-[0_0_0_6px_rgba(56,189,248,0.18)];
+  }
+
+  .login-brand h1 {
+    @apply m-0 text-[18px] font-semibold text-[var(--text-h)];
+  }
+
+  .login-brand p {
+    @apply mt-0.5 text-xs text-slate-400;
+  }
+
+  .login-form {
+    @apply flex flex-col gap-4;
+  }
+
+  .login-field {
+    @apply flex flex-col gap-1.5 text-[12px] font-semibold uppercase tracking-[0.04em] text-slate-400;
+  }
+
+  .login-field input {
+    @apply rounded-[10px] border border-slate-700 bg-black px-3.5 py-2.5 text-sm text-slate-100 outline-none transition duration-200 focus:border-sky-500 focus:bg-black hover:border-slate-500 hover:shadow-[0_0_0_1px_rgba(56,189,248,0.12)];
+  }
+
+  .login-error {
+    @apply m-0 text-xs text-rose-500;
+  }
+
+  .login-submit {
+    @apply rounded-[10px] border border-slate-700 bg-black px-4 py-3 text-sm font-semibold text-white transition duration-200 hover:border-sky-500/60 hover:bg-slate-900 hover:text-sky-100 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .login-switch {
+    @apply mt-4 text-center text-sm text-slate-400;
+  }
+
+  .login-switch button {
+    @apply border-0 bg-transparent p-0 text-slate-300 transition duration-200 hover:text-sky-300;
+  }
+
+  @media (max-width: 1024px) {
+    .login-shell {
+      @apply min-h-screen rounded-none border-0 shadow-none lg:grid-cols-1;
+    }
+
+    .login-panel {
+      @apply px-4 py-8;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .login-page {
+      @apply px-0 py-0;
+    }
+
+    .login-card {
+      @apply p-6;
+    }
   }
 }

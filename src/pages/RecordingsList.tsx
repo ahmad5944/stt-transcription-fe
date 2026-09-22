@@ -72,16 +72,16 @@ export function RecordingsList() {
 
   return (
     <div className="card recordings-card">
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 4 }}>
-        <h3 style={{ margin: 0 }}>Rekaman Suara Terakhir</h3>
+      <div className="mb-1 flex items-center justify-between">
+        <h3 className="m-0">Rekaman Suara Terakhir</h3>
         <button type="button" className="refresh-link" onClick={load} disabled={isLoading}>
           {isLoading ? '...' : 'Refresh'}
         </button>
       </div>
 
-      {error && <p style={{ color: '#f87171', fontSize: 12 }}>{error}</p>}
+      {error && <p className="text-xs text-rose-400">{error}</p>}
       {!error && recordings.length === 0 && !isLoading && (
-        <p style={{ color: '#6b7280', fontSize: 12 }}>Belum ada rekaman.</p>
+        <p className="text-xs text-slate-500">Belum ada rekaman.</p>
       )}
 
       <ul>

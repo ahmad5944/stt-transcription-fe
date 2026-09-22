@@ -6,7 +6,6 @@ import { PiPControlPanel } from '../components/PiPControlPanel';
 import { StreamingClient } from '../services/websocketClient';
 import { RecordingsList } from './RecordingsList';
 import './Dashboard.css';
-import dashboardCssText from './Dashboard.css?raw';
 
 const STREAMING_WS_URL = (import.meta.env.VITE_STREAMING_WS_URL as string | undefined) ?? 'ws://localhost:5003';
 const MIN_DB = -80;
@@ -153,15 +152,6 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
         rootDiv.style.width = '100%';
         rootDiv.style.height = '100%';
 
-        // Native PiP window is a separate document — inject the real Dashboard.css
-        // so it renders identically to the main dashboard (no duplicated/stale styles).
-        const style = pipWindow.document.createElement('style');
-        style.textContent = `
-          html, body { margin: 0; padding: 0; height: 100%; }
-          ${dashboardCssText}
-        `;
-        pipWindow.document.head.appendChild(style);
-
         pipRootRef.current = createRoot(rootDiv);
       }
 
@@ -299,7 +289,7 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
               <span className={`status-dot${isRecording ? '' : ' status-dot-idle'}`} />
               <span>{status}</span>
             </div>
-            {recordingId && <div className="level-caption" style={{ marginTop: 10 }}>Recording ID: {recordingId}</div>}
+            {recordingId && <div className="mt-2.5 text-center text-xs text-slate-500">Recording ID: {recordingId}</div>}
           </div>
         </div>
 
@@ -310,14 +300,13 @@ export function DeviceSelection({ onLogout }: DeviceSelectionProps) {
 
       <div className="card transcript-card">
         <div className="transcript-header">
-          <h3 style={{ margin: 0 }}>Transkrip</h3>
+          <h3 className="m-0">Transkrip</h3>
           {isRecording && <span className="transcript-live-dot" title="Live" />}
           <button
             type="button"
-            className="refresh-link"
+            className="refresh-link ml-auto"
             onClick={() => setTranscript('')}
             disabled={isRecording}
-            style={{ marginLeft: 'auto' }}
           >
             Reset
           </button>

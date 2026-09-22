@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './App.css';
 import { DeviceSelection } from './pages/DeviceSelection';
 import { Login } from './pages/Login';
 
